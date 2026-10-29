@@ -30,6 +30,7 @@ from config import Config
 
 
 @pytest.mark.regression
+@pytest.mark.sanity
 def test_user_logout(page):
     """
     Automated Test Case: Verify that a logged-in user can successfully log out of the application.

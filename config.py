@@ -1,9 +1,9 @@
 class Config:
-    email="pavanol@abc.com"
-    password="test@123"
+    email="shambhuk260@gmail.com"
+    password="NewYorkLife@12345"
 
     invalid_email="pavanol123@abc.com"
-    invalid_password="test@123xyz"
+    invalid_password="test@123"
 
     product_name = "MacBook"
     product_quantity = "1"
