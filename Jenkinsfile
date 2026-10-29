@@ -23,14 +23,14 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 bat '''
-                python -m venv .venv
+                "C:\\Users\\SHAMBHU KUMAR\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m venv .venv
                 call .venv\\Scripts\\activate.bat
                 python -m pip install --upgrade pip
                 pip install -r requirements.txt
                 playwright install chromium firefox webkit
                 '''
-            }
-        }
+    }
+}
 
         stage('Run Tests') {
             steps {
