@@ -26,7 +26,7 @@ pipeline {
                 "C:\\Users\\SHAMBHU KUMAR\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m venv .venv
                 .venv\\Scripts\\python.exe -m pip install --upgrade pip
                 .venv\\Scripts\\python.exe -m pip install -r requirements.txt
-                .venv\\Scripts\\python.exe -m playwright install ${BROWSER}
+                .venv\\Scripts\\python.exe -m playwright install ${params.BROWSER}
                 '''
             }
         }
