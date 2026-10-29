@@ -22,12 +22,14 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 script {
-                    def browser = params.BROWSER
+                    def pythonPath = "C:\\Users\\SHAMBHU KUMAR\\AppData\\Local\\Programs\\Python\\Python314\\python.exe"
+                    def browserName = params.BROWSER ? params.BROWSER : 'chromium'
+
                     bat """
-                    "C:/Users/SHAMBHU KUMAR/AppData/Local/Programs/Python/Python314/python.exe" -m venv .venv
-                    .venv/Scripts/python.exe -m pip install --upgrade pip
-                    .venv/Scripts/python.exe -m pip install -r requirements.txt
-                    .venv/Scripts/python.exe -m playwright install ${browser}
+                        "${pythonPath}" -m venv .venv
+                        .venv\\Scripts\\python.exe -m pip install --upgrade pip
+                        .venv\\Scripts\\python.exe -m pip install -r requirements.txt
+                        .venv\\Scripts\\python.exe -m playwright install ${browserName}
                     """
                 }
             }
@@ -36,10 +38,11 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    def browser = params.BROWSER
-                    def markers = params.MARKERS
+                    def browserName = params.BROWSER ? params.BROWSER : 'chromium'
+                    def markers = params.MARKERS ? params.MARKERS : 'sanity or regression'
+
                     bat """
-                    .venv/Scripts/python.exe -m pytest tests -m "${markers}" --browser=${browser} --junitxml=reports/junit.xml
+                        .venv\\Scripts\\python.exe -m pytest tests -m "${markers}" --browser=${browserName} --junitxml=reports/junit.xml
                     """
                 }
             }
