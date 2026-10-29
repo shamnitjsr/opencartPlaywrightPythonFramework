@@ -38,7 +38,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    def markers = params.MARKERS ? params.MARKERS : 'sanity or regression'
+                    def markers = params.MARKERS ? params.MARKERS : 'sanity or regression or end_to_end or datadriven'
 
                     bat """
                         .venv\\Scripts\\python.exe -m pytest tests -m "${markers}" --junitxml=reports/junit.xml
