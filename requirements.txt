@@ -24,3 +24,5 @@ python-slugify
 # pip install -r requirements.txt
 
 
+
+allure-python-commons
