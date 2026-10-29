@@ -52,6 +52,11 @@ pipeline {
         always {
             junit allowEmptyResults: true, testResults: 'reports/junit.xml'
             archiveArtifacts artifacts: 'reports/**', allowEmptyArchive: true
+
+            // Generates and publishes the Allure Report dashboard in Jenkins
+            allure includeProperties: false,
+                   jdk: '',
+                   results: [[path: 'reports/allure-results']]
         }
     }
 }
