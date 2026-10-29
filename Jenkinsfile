@@ -38,11 +38,10 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    def browserName = params.BROWSER ? params.BROWSER : 'chromium'
                     def markers = params.MARKERS ? params.MARKERS : 'sanity or regression'
 
                     bat """
-                        .venv\\Scripts\\python.exe -m pytest tests -m "${markers}" --browser=${browserName} --junitxml=reports/junit.xml
+                        .venv\\Scripts\\python.exe -m pytest tests -m "${markers}" --junitxml=reports/junit.xml
                     """
                 }
             }
