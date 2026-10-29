@@ -24,19 +24,17 @@ pipeline {
             steps {
                 bat '''
                 "C:\\Users\\SHAMBHU KUMAR\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m venv .venv
-                call .venv\\Scripts\\activate.bat
-                python -m pip install --upgrade pip
-                pip install -r requirements.txt
-                playwright install chromium firefox webkit
+                .venv\\Scripts\\python.exe -m pip install --upgrade pip
+                .venv\\Scripts\\python.exe -m pip install -r requirements.txt
+                .venv\\Scripts\\python.exe -m playwright install ${BROWSER}
                 '''
-    }
-}
+            }
+        }
 
         stage('Run Tests') {
             steps {
                 bat """
-                call .venv\\Scripts\\activate.bat
-                pytest tests -m "${params.MARKERS}" --browser=${params.BROWSER} --junitxml=reports/junit.xml
+                .venv\\Scripts\\python.exe -m pytest tests -m "${params.MARKERS}" --browser=${params.BROWSER} --junitxml=reports/junit.xml
                 """
             }
         }
@@ -45,16 +43,21 @@ pipeline {
     post {
         always {
             junit allowEmptyResults: true, testResults: 'reports/junit.xml'
-            allure includeProperties: false, jdk: '', results: [[path: 'reports/allure-results']]
             archiveArtifacts artifacts: 'reports/**', allowEmptyArchive: true
-            publishHTML(target: [
-                reportDir: 'reports',
-                reportFiles: 'myreport.html',
-                reportName: 'Pytest HTML Report',
-                keepAll: true,
-                allowMissing: true,
-                alwaysLinkToLastBuild: true
-            ])
+
+            // Uncomment ONLY after installing the Allure Jenkins plugin
+            // and adding an "allure" tool under Manage Jenkins -> Tools
+            // allure includeProperties: false, jdk: '', results: [[path: 'reports/allure-results']]
+
+            // Uncomment ONLY after installing the HTML Publisher plugin
+            // publishHTML(target: [
+            //     reportDir: 'reports',
+            //     reportFiles: 'myreport.html',
+            //     reportName: 'Pytest HTML Report',
+            //     keepAll: true,
+            //     allowMissing: true,
+            //     alwaysLinkToLastBuild: true
+            // ])
         }
     }
 }
