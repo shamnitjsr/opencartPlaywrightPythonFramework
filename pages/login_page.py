@@ -23,6 +23,7 @@ class LoginPage:
         self.txt_password = page.locator('#input-password')
         self.btn_login = page.locator('input[value="Login"]')
         self.txt_error_message = page.locator('.alert.alert-danger.alert-dismissible')
+        self.forgot_password_link = page.locator("(//a[normalize-space()='Forgotten Password'])[1]")
 
     # ===== Action Methods =====
     # These methods represent user interactions on the Login Page.
@@ -73,3 +74,13 @@ class LoginPage:
         except Exception as e:
             print(f" Exception while fetching login error message: {e}")
             return None
+
+    def forgot_password_link_present(self):
+        """Check if the 'Forgotten Password' link is present."""
+        try:
+             return self.forgot_password_link.is_visible()
+
+        except Exception as e:
+            print(f" Exception while checking 'Forgotten Password' link visibility: {e}")
+            return False
+            raise

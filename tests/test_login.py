@@ -176,6 +176,30 @@ def test_empty_email_and_password_login(page):
 
 
 
+@allure.epic("OpenCart Web Shop")
+@allure.feature("Login")
+@allure.story("PROJ-101: Forgotten_Password_Link_Present")
+@allure.issue("PROJ-101", "User story: Forgotten_Password_Link_Present")
+@allure.testcase("PROJ-101", "TC006_Forgotten_Password_Link_Present")
+@allure.severity(allure.severity_level.NORMAL)
+@allure.title("TC006_Forgotten_Password_Link_Present")
+@allure.description("Verify Forgotten Password Link Present")
+@pytest.mark.regression
+def test_Forgotten_Password_Link_Present(page):
+    home_page = HomePage(page)
+    login_page = LoginPage(page)
+
+    with allure.step("Open the login page"):
+        home_page.click_my_account()
+        home_page.click_login()
+
+    with allure.step("Forgotten Password Link Present"):
+        assert login_page.forgot_password_link_present() is True, "Forgotten password link is not visible"
+
+
+
+
+
 
 
 

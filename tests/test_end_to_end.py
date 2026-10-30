@@ -12,7 +12,7 @@ from config import Config
 from utilities.random_data_util import RandomDataUtil
 from playwright.sync_api import expect
 
-@pytest.mark.skip
+#@pytest.mark.skip
 @pytest.mark.end_to_end
 
 def test_end_to_end_flow(page):
