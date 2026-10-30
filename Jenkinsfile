@@ -41,7 +41,7 @@ pipeline {
                     def markers = params.MARKERS ? params.MARKERS : 'sanity or regression'
 
                     bat """
-                        .venv\\Scripts\\python.exe -m pytest tests -m \"${markers}\" --junitxml=reports/junit.xml
+                        .venv\\Scripts\\python.exe -m pytest tests -m '${markers}' --junitxml=reports/junit.xml
                     """
                 }
             }
