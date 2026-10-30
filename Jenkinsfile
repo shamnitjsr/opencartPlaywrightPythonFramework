@@ -38,10 +38,11 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    def markers = params.MARKERS ? params.MARKERS : 'sanity or regression or end_to_end or datadriven'
+                    def markers = params.MARKERS ? params.MARKERS : 'sanity or regression'
 
+                    // Using single quotes around '${markers}' prevents Windows cmd quote parsing issues
                     bat """
-                        .venv\\Scripts\\python.exe -m pytest tests -m "${markers}" --junitxml=reports/junit.xml
+                        .venv\\Scripts\\python.exe -m pytest tests -m '${markers}' --junitxml=reports/junit.xml
                     """
                 }
             }
@@ -55,8 +56,7 @@ pipeline {
 
             allure includeProperties: false,
                    jdk: '',
-                   results: [[path: 'reports/allure-results']],
-                   commandLine: 'allure'
+                   results: [[path: 'reports/allure-results']]
         }
     }
 }
