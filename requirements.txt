@@ -10,6 +10,7 @@ Faker
 python-slugify
 
 
+
 #pytest==8.3.2
 #playwright==1.48.0
 #pytest-xdist==3.6.1

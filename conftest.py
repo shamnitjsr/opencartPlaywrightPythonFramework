@@ -3,6 +3,7 @@ import allure
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
+
 # ========================================================================
 # PYTEST + PLAYWRIGHT TEST CONFIGURATION FILE
 # ========================================================================
@@ -163,3 +164,4 @@ def page(request, browser_context):
                 video_path.unlink(missing_ok=True)
         except Exception as e:
             print(f"[WARN] Could not process video: {e}")
+
