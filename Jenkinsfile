@@ -57,28 +57,5 @@ pipeline {
                    jdk: '',
                    results: [[path: 'reports/allure-results']]
         }
-
-        // Add email notification block here
-        success {
-            emailext body: '''<p>Hi Team,</p>
-                              <p>The Playwright automation test suite executed successfully on Jenkins.</p>
-                              <p>Please find the attached HTML test execution report.</p>
-                              <p><b>Build URL:</b> ${BUILD_URL}</p>''',
-                     subject: 'SUCCESS: Playwright Test Automation Build #${BUILD_NUMBER}',
-                     to: 'your-email@example.com', // Replace with the recipient email address
-                     mimeType: 'text/html',
-                     attachmentsPattern: 'reports/myreport.html'
-        }
-
-        failure {
-            emailext body: '''<p>Hi Team,</p>
-                              <p>The Playwright automation test suite encountered failures.</p>
-                              <p>Please check the attached report for details.</p>
-                              <p><b>Build URL:</b> ${BUILD_URL}</p>''',
-                     subject: 'FAILED: Playwright Test Automation Build #${BUILD_NUMBER}',
-                     to: 'your-email@example.com', // Replace with the recipient email address
-                     mimeType: 'text/html',
-                     attachmentsPattern: 'reports/myreport.html'
-        }
     }
 }
