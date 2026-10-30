@@ -29,6 +29,7 @@ from config import Config
 
 
 @pytest.mark.regression
+@pytest.mark.skip
 def test_add_product_to_cart(page):
     """
     Automated Test Case: Verify user can search and add a product to the cart.

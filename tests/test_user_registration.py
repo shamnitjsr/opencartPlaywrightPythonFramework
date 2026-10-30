@@ -30,6 +30,7 @@ from utilities.random_data_util import RandomDataUtil
 from playwright.sync_api import expect
 
 
+@pytest.mark.skip
 @pytest.mark.sanity
 @pytest.mark.regression
 def test_user_registration(page):

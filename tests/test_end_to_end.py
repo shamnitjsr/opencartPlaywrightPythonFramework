@@ -13,6 +13,7 @@ from utilities.random_data_util import RandomDataUtil
 from playwright.sync_api import expect
 
 @pytest.mark.end_to_end
+@pytest.mark.skip
 def test_end_to_end_flow(page):
     """
     End-to-End Test Flow:

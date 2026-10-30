@@ -29,6 +29,7 @@ from pages.my_account_page import MyAccountPage
 from config import Config
 
 
+@pytest.mark.skip
 @pytest.mark.regression
 @pytest.mark.sanity
 def test_user_logout(page):

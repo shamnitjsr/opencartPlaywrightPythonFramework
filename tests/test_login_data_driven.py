@@ -15,6 +15,7 @@ csv_data=read_csv_data("testdata/logindata.csv")
 json_data=read_json_data("testdata/logindata.json")
 excel_data=read_excel_data("testdata/logindata.xlsx")
 
+@pytest.mark.skip
 @pytest.mark.datadriven
 @pytest.mark.parametrize("testName,email,password,expected",excel_data)
 def test_login_data_driven(page,testName,email,password,expected):

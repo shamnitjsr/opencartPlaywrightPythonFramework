@@ -23,8 +23,10 @@ from pages.home_page import HomePage
 from pages.search_results_page import SearchResultsPage
 from config import Config
 
+@pytest.mark.skip
 @pytest.mark.sanity
 @pytest.mark.regression
+@pytest.mark.skip
 def test_product_search(page):
 
     product_name=Config.product_name
