@@ -40,9 +40,9 @@ pipeline {
                 script {
                     def markers = params.MARKERS ? params.MARKERS : 'sanity or regression'
 
-                    // Using single quotes around '${markers}' prevents Windows cmd quote parsing issues
+                    // Removed the single quotes around ${markers} because Windows cmd parses them incorrectly
                     bat """
-                        .venv\\Scripts\\python.exe -m pytest tests -m '${markers}' --junitxml=reports/junit.xml
+                        .venv\\Scripts\\python.exe -m pytest tests -m ${markers} --junitxml=reports/junit.xml
                     """
                 }
             }
