@@ -84,3 +84,28 @@ class LoginPage:
             print(f" Exception while checking 'Forgotten Password' link visibility: {e}")
             return False
             raise
+
+    def keypress_Tab_26times(self):
+        """Simulate pressing the Tab key 26 times."""
+        try:
+            for _ in range(26):
+                self.page.keyboard.press("Tab")
+        except Exception as e:
+            print(f" Exception while pressing Tab key: {e}")
+            raise
+
+    def type_email_using_keyboard(self, email: str):
+        """Type the email address using keyboard input."""
+        try:
+            self.page.keyboard.insert_text(email)
+        except Exception as e:
+            print(f" Exception while typing email using keyboard: {e}")
+            raise
+
+    def type_password_using_keyboard(self, password: str):
+        """Type the password using keyboard input."""
+        try:
+            self.page.keyboard.insert_text(password)
+        except Exception as e:
+            print(f" Exception while typing password using keyboard: {e}")
+            raise
