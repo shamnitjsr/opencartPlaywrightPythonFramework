@@ -8,7 +8,8 @@ pipeline {
 
     parameters {
         choice(name: 'BROWSER', choices: ['chromium', 'firefox', 'webkit'], description: 'Browser to run on')
-        string(name: 'MARKERS', defaultValue: 'sanity or regression', description: 'Pytest marker expression')
+        choice(name: 'SUITE', choices: ['smoke','sanity','regression'], description: 'Test suite')
+        //string(name: 'MARKERS', defaultValue: 'sanity or regression', description: 'Pytest marker expression')
     }
 
     stages {
